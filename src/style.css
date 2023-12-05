@@ -1,0 +1,276 @@
+*
+{
+    margin: 0;
+    padding: 0;
+
+    /*-ms-touch-action: none;*/
+    /*touch-action: none;*/
+}
+
+html,
+body
+{
+    background-color: black;
+    overflow: hidden;
+}
+
+
+/*.wrapper {*/
+/*    color: white;*/
+/*    padding : 20px;*/
+/*    position: relative;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    left: 0;*/
+/*    transition: all .5s linear;*/
+/*    transform-origin:0 0;*/
+/*    transform: translate3d(0px, 0px, 0px);*/
+/*    -webkit-backface-visibility: hidden;*/
+/*    -moz-backface-visibility: hidden;*/
+/*    -ms-backface-visibility: hidden;*/
+/*    backface-visibility: hidden;*/
+/*    -webkit-perspective: 1000;*/
+/*    -moz-perspective: 1000;*/
+/*    -ms-perspective: 1000;*/
+/*    perspective: 1000;*/
+
+/*    -webkit-box-sizing: border-box;*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+
+/********************* Preloader CSS *********************/
+
+#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 99999;
+    display: flex;
+}
+
+#preloader:before,
+#preloader:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+    background-color: #000;
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+#preloader:after {
+    left: auto;
+    right: 0;
+}
+
+#preloader .loader_line {
+    margin: auto;
+    width: 1px;
+    height: 75%;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: all 0.8s ease 0s;
+    -o-transition: all 0.8s ease 0s;
+    transition: all 0.8s ease 0s;
+}
+
+.loader_line:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 0%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-color: #fff;
+    -webkit-animation: lineheight 1000ms ease-in-out 0s forwards;
+    -o-animation: lineheight 1000ms ease-in-out 0s forwards;
+    animation: lineheight 1000ms ease-in-out 0s forwards;
+}
+
+.loader_line:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #bbb;
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-animation: lineround 1200ms linear 0s infinite;
+    -o-animation: lineround 1200ms linear 0s infinite;
+    animation: lineround 1200ms linear 0s infinite;
+    animation-delay: 2000ms;
+}
+
+@keyframes lineheight {
+    0% {
+        height: 0%;
+    }
+
+    100% {
+        height: 100%;
+    }
+}
+
+@keyframes lineround {
+    0% {
+        -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+
+    100% {
+        -webkit-transform: translateY(200%);
+        -ms-transform: translateY(200%);
+        -o-transform: translateY(200%);
+        transform: translateY(200%);
+    }
+}
+
+/*hiding all*/
+.preloaded .loader_line:after {
+    opacity: 0;
+}
+
+.preloaded .loader_line {
+    opacity: 0;
+    height: 100% !important;
+}
+
+.preloaded:before,
+.preloaded:after {
+    -webkit-animation: preloadedzero 1000ms ease-in-out 500ms forwards;
+    -o-animation: preloadedzero 1000ms ease-in-out 500ms forwards;
+    animation: preloadedzero 1000ms ease-in-out 500ms forwards;
+}
+
+@keyframes preloadedzero {
+    0% {
+        width: 50%;
+    }
+
+    100% {
+        width: 0%;
+    }
+}
+
+/********************* Preloader CSS *********************/
+
+
+/********************* Play  *********************/
+#play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transition: opacity 1.0s ease-in;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #555555;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+#play-button:hover {
+    background-color: #333333;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -48%);
+}
+
+#play-icon {
+    margin-right: 5px;
+}
+
+#play-button.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+/********************* End Play *********************/
+
+/********************* Sections *********************/
+.wrapper {
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.smooth {
+    display: block;
+    position: relative;
+    overflow: hidden auto;
+    will-change: transform;
+}
+
+.section
+{
+    display: flex;
+    align-items: center;
+    height: 100dvh;
+    position: relative;
+    font-family: 'Cabin', sans-serif;
+    color: #ffeded;
+    text-transform: uppercase;
+    font-size: 7vmin;
+    padding-left: 10%;
+    padding-right: 10%;
+    /*pointer-events: none;*/
+}
+
+section:nth-child(odd)
+{
+    justify-content: flex-end;
+}
+
+#fake-scroll {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden auto;
+    top: 0px;
+    left: 0px;
+}
+
+/********************* End Sections *********************/
+
