@@ -302,7 +302,9 @@ export default class Page {
     }
 
     resize() {
-
+        this.fbo.resize(this.sizes.width, this.sizes.height);
+        this.renderMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2)
+        this.horsePointsMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2)
     }
 
     scroll()

@@ -55,6 +55,9 @@ export default class Renderer
         // Instance
         this.instance.setSize(this.sizes.width, this.sizes.height)
         this.instance.setPixelRatio(Math.min(this.sizes.pixelRatio, 2))
+
+        this.postProcess.composer.setSize(this.sizes.width, this.sizes.height)
+        this.postProcess.composer.setPixelRatio(Math.min(this.sizes.pixelRatio, 2))
     }
 
     setPostProcess() {

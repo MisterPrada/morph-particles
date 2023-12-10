@@ -105,6 +105,10 @@ export default class FBO {
         this.particles = new THREE.Points(geometry, this.renderMaterial);
     }
 
+    resize() {
+        this.rtt.setSize(this.width, this.height);
+    }
+
     update(time) {
         // Update the simulation and render the result to a target texture
         this.renderer.setRenderTarget(this.rtt);
