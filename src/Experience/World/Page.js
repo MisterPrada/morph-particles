@@ -326,6 +326,7 @@ export default class Page {
         }
 
         this.normalizedScrollY = this.scrollY / (this.sectionCount * window.innerHeight);
+        this.normalizedScrollY = Math.min(this.normalizedScrollY, 1.0)
     }
 
     scrollSet()
