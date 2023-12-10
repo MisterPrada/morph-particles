@@ -76,9 +76,10 @@ void main() {
     gl_PointSize = mix(0.0, uSize, (uScroll - uRange * 2.0) * uTotalModels );
     gl_Position = mix( originalPos, transformedPos, (uScroll - uRange * 2.0) * uTotalModels );
   } else {
-    gl_PointSize = mix(uSize, 0.0, (uScroll - uRange * 3.0) * uTotalModels );
+    float scroll = max((uScroll - uRange * 3.0), (uScroll - uRange * 3.0) * uTotalModels);
+    gl_PointSize = mix(uSize, 0.0, scroll);
     originalPos.x -= 2.;
-    gl_Position = mix( transformedPos, originalPos, (uScroll - uRange * 3.0) * uTotalModels );
+    gl_Position = mix( transformedPos, originalPos, scroll);
   }
 
   #include <logdepthbuf_vertex>

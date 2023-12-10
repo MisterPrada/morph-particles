@@ -25,7 +25,8 @@ void main() {
   } else if (uScroll < range * 3.0) {
     customSize = mix(5., 20., (uScroll - range * 2.0) * uTotalModels);
   } else {
-    customSize = mix(20., 15., (uScroll - range * 3.0) * uTotalModels);
+    float scroll = max((uScroll - range * 3.0), (uScroll - range * 3.0) * uTotalModels);
+    customSize = mix(20., 15., scroll);
   }
 
   gl_Position = projectionPosition;
