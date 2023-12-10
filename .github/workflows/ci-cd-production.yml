@@ -27,6 +27,6 @@ jobs:
         with:
           server: ftp.misterprada.com
           local-dir: ./dist/
-          server-dir: /morph.misterprada.com/
+          server-dir: /christmas.misterprada.com/
           username: ${{ vars.PRODUCTION_FTP_USERNAME }}
           password: ${{ secrets.PRODUCTION_FTP_PASSWORD }}
