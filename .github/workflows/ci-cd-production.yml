@@ -1,0 +1,32 @@
+# git ftp init -u "${{ vars.PRODUCTION_FTP_USERNAME }}" -p "${{ secrets.PRODUCTION_FTP_PASSWORD }}" "${{ vars.PRODUCTION_FTP_HOST }}"
+# git ftp push --force -b main --user "${{ vars.PRODUCTION_FTP_USERNAME }}" --passwd "${{ secrets.PRODUCTION_FTP_PASSWORD }}" "${{ vars.PRODUCTION_FTP_HOST }}"
+# git ftp push -vv --auto-init --insecure --changed-only -f -b main --user "${{ vars.PRODUCTION_FTP_USERNAME }}" --passwd "${{ secrets.PRODUCTION_FTP_PASSWORD }}" "${{ vars.PRODUCTION_FTP_HOST }}"
+
+name: FTP Deploy Source Code
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  main:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: 📂 NPM Install and Build
+        run: |
+          npm install
+          npm run build
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.misterprada.com
+          local-dir: ./dist/
+          server-dir: /morph.misterprada.com/
+          username: ${{ vars.PRODUCTION_FTP_USERNAME }}
+          password: ${{ secrets.PRODUCTION_FTP_PASSWORD }}
