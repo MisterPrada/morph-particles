@@ -70,7 +70,7 @@ export default class World
     }
 
     resize() {
-
+        this.page.resize()
     }
 
     scroll()

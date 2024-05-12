@@ -1,6 +1,7 @@
 uniform sampler2D uPositions;//RenderTarget containing the transformed positions
 uniform float uSize;
 uniform float uPixelRatio;
+uniform vec2 uResolution;
 uniform float uScroll;
 varying vec3 vPos;
 varying vec2 vUv;
@@ -30,7 +31,7 @@ void main() {
   }
 
   gl_Position = projectionPosition;
-  gl_PointSize = customSize * uPixelRatio;
+  gl_PointSize = customSize * uResolution.y * 0.0013;
   gl_PointSize *= (1.0 / - viewPosition.z);
 
   vPos = pos;

@@ -213,6 +213,12 @@ export default class Page {
                 uTime: { value: 0 },
                 uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
                 uScroll : { value: this.normalizedScrollY },
+                uResolution: new THREE.Uniform(
+                    new THREE.Vector2(
+                        this.sizes.width * this.sizes.pixelRatio,
+                        this.sizes.height * this.sizes.pixelRatio
+                    )
+                ),
             },
             defines:
             {
@@ -305,6 +311,7 @@ export default class Page {
         this.fbo.resize(this.sizes.width, this.sizes.height);
         this.renderMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2)
         this.horsePointsMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2)
+        this.renderMaterial.uniforms.uResolution.value.set(this.sizes.width * this.sizes.pixelRatio, this.sizes.height * this.sizes.pixelRatio)
     }
 
     scroll()
